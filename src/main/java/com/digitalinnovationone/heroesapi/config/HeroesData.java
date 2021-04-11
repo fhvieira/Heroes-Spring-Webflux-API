@@ -36,7 +36,7 @@ public class HeroesData {
 
         Table table = dynamoDB.getTable("Heroes_Table");
         Item hero = new Item()
-                .withPrimaryKey("id", 1)
+                .withPrimaryKey("id", "1")
                 .withString("name", "mulher maravilha")
                 .withString("universe", "dc comics")
                 .withNumber("films", 3);

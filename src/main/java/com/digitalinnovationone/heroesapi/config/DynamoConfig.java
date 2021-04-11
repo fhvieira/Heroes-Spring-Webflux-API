@@ -13,21 +13,21 @@ import org.springframework.util.StringUtils;
 @Configuration
 @EnableDynamoDBRepositories
 public class DynamoConfig {
-    @Value("${amazom.dynamodb.endpoint}")
-    private String amazomDynamoDBEndpoint;
+    @Value("${amazon.dynamodb.endpoint}")
+    private String amazonDynamoDBEndpoint;
 
     @Value("${aws_access_key_id}")
-    private String amazomAWSAccessKey;
+    private String amazonAWSAccessKey;
 
     @Value("${aws_secret_access_key}")
-    private String amazomAWSSecretKey;
+    private String amazonAWSSecretKey;
 
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
         AmazonDynamoDB amazonDynamoDB = new AmazonDynamoDBClient(amazonAWSCredentials());
 
-        if (!StringUtils.isEmpty(amazomDynamoDBEndpoint)) {
-            amazonDynamoDB.setEndpoint(amazomDynamoDBEndpoint);
+        if (!StringUtils.isEmpty(amazonDynamoDBEndpoint)) {
+            amazonDynamoDB.setEndpoint(amazonDynamoDBEndpoint);
         }
         return amazonDynamoDB;
     }
@@ -35,8 +35,8 @@ public class DynamoConfig {
     @Bean
     public AWSCredentials amazonAWSCredentials() {
         return new BasicAWSCredentials(
-                amazomAWSAccessKey,
-                amazomAWSSecretKey);
+                amazonAWSAccessKey,
+                amazonAWSSecretKey);
     }
 
 }
